@@ -40,6 +40,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // 创建轨道控制器
 const controls = new OrbitControls(camera, renderer.domElement);
 
+// 添加坐标轴辅助器
+const axesHelper = new THREE.AxesHelper( 5 );
+scene.add( axesHelper );
+
 // 设置一个渲染函数
 function render() {
     // 使用渲染器，通过相机将场景渲染进来
@@ -47,10 +51,10 @@ function render() {
     // 渲染下一帧的时候再次调用render函数
     requestAnimationFrame(render);
 }
+
 document.addEventListener('DOMContentLoaded', function () {
     // 将webgl渲染的canvas内容添加到body
     document.body.appendChild(renderer.domElement);
     render();
 })
-
 
