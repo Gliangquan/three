@@ -15,36 +15,45 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 
 // 设置相机位置
 camera.position.set(0, 0, 10);
-scene.background = new THREE.Color(0xff0000);
+// scene.background = new THREE.Color(0xff0000);
 scene.add(camera);
 
 // 添加环境光
 const light = new THREE.AmbientLight(0xffffff, 10);
 scene.add(light);
+// 添加平行光
+const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
+directionalLight.position.set(0, 0, 10);
+scene.add(directionalLight);
 
 
 // 创建材质
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load( './imgs/satrt/circle_05.png');
 
-const vertices = []; // 存放顶点数据
-for ( let i = 0; i < 1000; i ++ ) {
-    const x = THREE.MathUtils.randFloatSpread(20);
-    const y = THREE.MathUtils.randFloatSpread(20);
-    const z = THREE.MathUtils.randFloatSpread(20);
-    vertices.push( x, y, z );
+
+const count = 2000;
+const positions = new Float32Array(count * 3); // 设置缓冲区数组
+const colors = new Float32Array(count * 3); // 设置颜色数组
+
+for ( let i = 0; i < count * 3; i ++ ) {
+    positions[i] = (Math.random() - 0.5) * 40;
+    colors[i] = Math.random(); // 随机颜色
 }
+
+// 创建 BufferGeometry 并设置位置和颜色属性
 const geometry = new THREE.BufferGeometry();
-geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+
 const material = new THREE.PointsMaterial({ 
-    color: 0xffffff
-    , map: texture // 贴图
-    , transparent: true // 开启透明
-    , size: 0.5 // 点的大小
-    , sizeAttenuation: true // 点的大小是否受相机深度影响
-    , alphaMap: texture // 透明贴图
-    , alphaTest: 0.1    // 透明贴图阈值
-    , blending: THREE.AdditiveBlending // 混合模式
+    map: texture, 
+    size: 0.2, 
+    sizeAttenuation: true, 
+    depthWrite: false, 
+    blending: THREE.AdditiveBlending, 
+    vertexColors: true // 使用顶点颜色
 });
 const points = new THREE.Points(geometry, material);
 scene.add( points );
