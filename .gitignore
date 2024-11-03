@@ -1,10 +1,44 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /parcel-cache
 /.parcel-cache
 /dist
+
+# t01_base
+/t01_base/node_modules
+/t01_base/parcel-cache
+/t01_base/.parcel-cache
+/t01_base/dist
+
+# t02_gsap
+/t02_gsap/node_modules
+/t02_gsap/parcel-cache
+/t02_gsap/.parcel-cache
+/t02_gsap/dist
+
+# t03_geometry
+/t03_geometry/node_modules
+/t03_geometry/parcel-cache
+/t03_geometry/.parcel-cache
+/t03_geometry/dist
+
+# t04_material
+/t04_material/node_modules
+/t04_material/parcel-cache
+/t04_material/.parcel-cache
+/t04_material/dist
+
+# t05_pointes
+/t05_pointes/node_modules
+/t05_pointes/parcel-cache
+/t05_pointes/.parcel-cache
+/t05_pointes/dist
+
+# t07_raycaster
+/t07_raycaster/node_modules
+/t07_raycaster/parcel-cache
+/t07_raycaster/.parcel-cache
+/t07_raycaster/dist
 
 # testing
 /coverage
