@@ -40,6 +40,12 @@
 /t07_raycaster/.parcel-cache
 /t07_raycaster/dist
 
+# t08_full_scroll
+/t08_full_scroll/node_modules
+/t08_full_scroll/parcel-cache
+/t08_full_scroll/.parcel-cache
+/t08_full_scroll/dist
+
 # testing
 /coverage
 
